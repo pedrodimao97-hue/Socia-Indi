@@ -1,0 +1,25 @@
+{
+  "name": "social-hub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aplicativo completo de rede social com frontend, backend e banco de dados.",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w @social-hub/api\" \"npm run dev -w @social-hub/web\"",
+    "dev:local": "concurrently \"npm run dev:local -w @social-hub/api\" \"npm run dev -w @social-hub/web\"",
+    "setup:local": "node scripts/setup-local-env.js",
+    "build": "npm run build -w @social-hub/api && npm run build -w @social-hub/web",
+    "lint": "npm run lint -w @social-hub/api && npm run lint -w @social-hub/web",
+    "db:generate": "npm run prisma:generate -w @social-hub/api",
+    "db:migrate": "npm run prisma:migrate -w @social-hub/api",
+    "db:local:generate": "npm run prisma:generate:local -w @social-hub/api",
+    "db:local:push": "npm run prisma:push:local -w @social-hub/api",
+    "db:studio": "npm run prisma:studio -w @social-hub/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
