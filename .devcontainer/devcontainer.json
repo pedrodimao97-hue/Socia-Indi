@@ -1,0 +1,25 @@
+{
+  "name": "Social Hub",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "forwardPorts": [5173, 4000],
+  "portsAttributes": {
+    "5173": {
+      "label": "Social Hub Web",
+      "onAutoForward": "openPreview"
+    },
+    "4000": {
+      "label": "Social Hub API",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "npm install && npm run setup:local && npm run db:local:generate && npm run db:local:push",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Prisma.prisma",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}
